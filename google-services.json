@@ -1,0 +1,159 @@
+{
+  "project_info": {
+    "project_number": "496537659423",
+    "firebase_url": "https://flutterdemo-ad5b3.firebaseio.com",
+    "project_id": "flutterdemo-ad5b3",
+    "storage_bucket": "flutterdemo-ad5b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496537659423:android:3077e80b0c2efc2c",
+        "android_client_info": {
+          "package_name": "com.michaeloat.cordova.lab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496537659423-jnogq4sb9dlvnn9ccvc3ghdcsp10udqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.michaeloat.cordova.lab",
+            "certificate_hash": "7c2a5f52585f3bbfe4dfc58c50deedc273091323"
+          }
+        },
+        {
+          "client_id": "496537659423-n6f1sfdvp3d6rc31d4v6fpvsoqg7fc5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmX_1AkLfn6oDNh_OC5oHiI1sOfgvNtmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496537659423-n6f1sfdvp3d6rc31d4v6fpvsoqg7fc5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496537659423:android:c71ab68a459fdfc7",
+        "android_client_info": {
+          "package_name": "com.michaeloat.firebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496537659423-o2krgbn6l777fklushtplhg6eniaupt8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.michaeloat.firebasetest",
+            "certificate_hash": "83a05d538fb550fb56c655105e26dafcce202f18"
+          }
+        },
+        {
+          "client_id": "496537659423-thkl1u18ta80shq8iarfvekj4dj92ifs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.michaeloat.firebasetest",
+            "certificate_hash": "7c2a5f52585f3bbfe4dfc58c50deedc273091323"
+          }
+        },
+        {
+          "client_id": "496537659423-n6f1sfdvp3d6rc31d4v6fpvsoqg7fc5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmX_1AkLfn6oDNh_OC5oHiI1sOfgvNtmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496537659423-n6f1sfdvp3d6rc31d4v6fpvsoqg7fc5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496537659423:android:1c6dfa409582d61cdf8d2a",
+        "android_client_info": {
+          "package_name": "com.michaeloat.ion.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496537659423-n6f1sfdvp3d6rc31d4v6fpvsoqg7fc5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmX_1AkLfn6oDNh_OC5oHiI1sOfgvNtmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496537659423-n6f1sfdvp3d6rc31d4v6fpvsoqg7fc5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496537659423:android:65404b76a9a863bedf8d2a",
+        "android_client_info": {
+          "package_name": "com.michaeloat.ionlab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496537659423-11nvj8jbc7a5mb0ppr9ps9clr51f6qle.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.michaeloat.ionlab",
+            "certificate_hash": "7c2a5f52585f3bbfe4dfc58c50deedc273091323"
+          }
+        },
+        {
+          "client_id": "496537659423-n6f1sfdvp3d6rc31d4v6fpvsoqg7fc5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmX_1AkLfn6oDNh_OC5oHiI1sOfgvNtmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496537659423-n6f1sfdvp3d6rc31d4v6fpvsoqg7fc5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
