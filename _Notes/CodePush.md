@@ -31,3 +31,9 @@ appcenter codepush rollback -a <ownerName>/MyApp-iOS Production
 ```npm
 appcenter codepush rollback -a <ownerName>/MyApp-iOS Production --target-release v34
 ```
+
+#### 清除 歷史（Clearing Release History）
+`！！！注：轻易不要使用这个，将清除所有已发布的内容，用户将不再收到任何之前的更新`
+```npm
+appcenter codepush deployment clear -a <ownerName>/<appName> <deploymentName>
+```

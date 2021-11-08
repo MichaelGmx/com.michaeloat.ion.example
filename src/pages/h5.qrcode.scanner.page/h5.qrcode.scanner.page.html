@@ -1,0 +1,20 @@
+<ion-view class="h5-qrcode-scanner-page">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-ios-arrow-back" type="button" ng-click="myGoBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+      <p>H5 Qrcode Scanner</p>
+    </ion-nav-title>
+  </ion-nav-bar>
+
+  <ion-content>
+
+    <p>注：此插件需要https下，才允许获取camera权限</p>
+
+    <p>Result: {{ data.scanResult }}</p>
+    <div id="reader" width="300px"></div>
+    <button ng-click="startScan()" class="button button-positive">startScan</button>
+
+  </ion-content>
+</ion-view>

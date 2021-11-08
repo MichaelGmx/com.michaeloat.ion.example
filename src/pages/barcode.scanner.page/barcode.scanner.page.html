@@ -1,0 +1,20 @@
+<ion-view class="barcode-scanner-page">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-ios-arrow-back" type="button" ng-click="myGoBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+      <p>barcode scanner</p>
+    </ion-nav-title>
+  </ion-nav-bar>
+
+  <ion-content>
+
+    <button ng-click="scan()" class="button">扫一扫</button>
+
+    <div ng-if="data.strResult">
+      扫描结果：{{ data.strResult }}
+    </div>
+
+  </ion-content>
+</ion-view>

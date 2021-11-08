@@ -6,8 +6,12 @@
   "type": "ionic1",
   "watchPatterns": [
     "scss/**/*",
-    "www/**/*",
-    "!www/lib/**/*",
-    "!www/**/*.map"
-  ]
+    "src/**/*",
+    "!src/lib/**/*",
+    "!src/**/*.map"
+  ],
+  "documentRoot": "src",
+  "hooks": {
+    "build:after": "hooks/build-before.js"
+  }
 }

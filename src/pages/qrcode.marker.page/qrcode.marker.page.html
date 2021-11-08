@@ -1,0 +1,19 @@
+<ion-view class="qrcode-marker-page">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-ios-arrow-back" type="button" ng-click="myGoBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+      <p>QRcode Marker</p>
+    </ion-nav-title>
+  </ion-nav-bar>
+
+  <ion-content style="padding: 16px;">
+
+    <input style="width: 100%; margin-bottom: 10px;" ng-model="data.strText" />
+    <button ng-click="generateQRCode()" class="button button-positive" style="margin-bottom: 10px;">生成</button>
+
+    <div ng-show="data.qrcode_make_status" id="qrcode" class="qrcode"></div>
+
+  </ion-content>
+</ion-view>

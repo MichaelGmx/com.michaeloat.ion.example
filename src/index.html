@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src https://codepush.appcenter.ms 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <title>Ionic1 Example</title>
+
+    <!-- plugin style -->
+    <link href="lib/angular-toastr/dist/angular-toastr.min.css" rel="stylesheet">
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- main style -->
+    <link href="css/ionic.app.custom.min.css?v=0.0.0" rel="stylesheet">
+    <link href="css/style.min.css?v=0.0.0" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="lib/jQuery/jquery.signalR-2.4.1.min.js"></script>
+    <script src="http://newapi.q-pets.com/prjOWINSignalR/signalr/hubs"></script>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- plugin js -->
+    <script src="lib/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="lib/qrcodejs/qrcode.min.js"></script>
+    <script src="lib/html5-qrcode/html5-qrcode.min.js"></script>
+    <script src="lib/angular-signalr-hub/signalr-hub.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- main js -->
+    <script>var module = {};</script>
+    <script src="environment.js"></script>
+    <script src="main.js"></script>
+
+    <!-- build:constantjs -->
+    <script src="constants/constant.js?v=0.0.0"></script>
+    <!-- endbuild -->
+
+    <!-- build:configjs -->
+    <script src="configs/config.js?v=0.0.0"></script>
+    <!-- endbuild -->
+
+    <!-- build:routingjs -->
+    <script src="routings/routing.js?v=0.0.0"></script>
+    <!-- endbuild -->
+
+    <!-- build:runjs -->
+    <script src="runs/init.run.js?v=0.0.0"></script>
+    <!-- endbuild -->
+
+    <!-- build:directivejs -->
+    <script src="directives/directive.js?v=0.0.0"></script>
+    <!-- endbuild -->
+
+    <!-- build:filterjs -->
+    <script src="filters/filter.js?v=0.0.0"></script>
+    <!-- endbuild -->
+
+    <!-- build:servicejs -->
+    <script src="services/util.service.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:componentjs -->
+    <script src="components/ux.footer/ux.footer.js?v=0.0.0"></script>
+    <script src="components/ux.page.list/ux.page.list.js?v=0.0.0"></script>
+    <!-- endbuild -->
+
+    <!-- build:pagejs -->
+    <script src="pages/home.page/home.page.js?v=0.0.0"></script>
+    <script src="pages/media.capture.page/media.capture.page.js?v=0.0.0"></script>
+    <script src="pages/barcode.scanner.page/barcode.scanner.page.js?v=0.0.0"></script>
+    <script src="pages/qrcode.marker.page/qrcode.marker.page.js?v=0.0.0"></script>
+    <script src="pages/font.awesome.page/font.awesome.page.js?v=0.0.0"></script>
+    <script src="pages/h5.qrcode.scanner.page/h5.qrcode.scanner.page.js?v=0.0.0"></script>
+    <script src="pages/test.page/test.page.js?v=0.0.0"></script>
+    <!-- endbuild -->
+
+  </head>
+  <body ng-app="starter">
+
+    <ion-nav-view id="mainView"></ion-nav-view>
+
+  </body>
+</html>

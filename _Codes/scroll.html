@@ -1,0 +1,253 @@
+<!-- 參考：https://developer.aliyun.com/article/698567 -->
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>滚动字幕</title>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.js"></script>
+<style type="text/css">
+  .view {
+    width: 200px;
+    height: 500px;
+    background-color: #aaa;
+    position: relative;
+    overflow: hidden;
+  }
+  .bullet {
+    padding: 10px;  
+    box-sizing: border-box;
+  }
+  .inner {
+    background-color: white;
+    padding: 5px;
+  }
+  .clip {
+    transform: translate3d(0, 0px, 0);  
+    position: absolute;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+  <div id="app"></div>
+
+
+  <script type="text/babel">
+class Bullet {
+    constructor(text){
+        this.text = text;
+    }
+}
+
+class Clip {
+    constructor(){
+        this.bulletList = [];
+    }
+
+    fill(bullet){
+        this.bulletList.push(bullet);
+    }
+
+    isEmpty(){
+        return this.bulletList.length === 0;
+    }
+
+    getBulletAmount(){
+        return this.bulletList.length;
+    }
+
+    getBulletList(){
+        return this.bulletList;
+    }
+
+}
+
+class ClipFactory {
+    constructor(bulletMaxAmountPerClip, maxClipAmount){
+        this.bulletMaxAmountPerClip = bulletMaxAmountPerClip || 30;
+        this.maxClipAmount = maxClipAmount || 0;
+        this.clipList = [];
+        this.currentClip = new Clip();
+    }
+
+    receive(bullet){
+        this.currentClip.fill(bullet);
+        if(this.currentClip.getBulletAmount() >= this.bulletMaxAmountPerClip){
+            this.clipList.push(this.currentClip);
+            this.currentClip = new Clip();
+            if(this.maxClipAmount){
+                if(this.clipList.length > this.maxClipAmount){
+                    this.clipList.shift();
+                }
+            }
+        }
+    }
+
+    pop(){
+        let clip = this.clipList.shift();
+        if(!clip){
+            // 有可能是空弹夹
+            clip = this.currentClip;
+            this.currentClip = new Clip();
+        }
+        return clip;
+    }
+}
+
+class StandbyClipFactory extends ClipFactory {
+    constructor(){
+        super(1, 30);
+    }
+}
+
+class Engine {
+    constructor(wrapper, clipFactory, standbyClipFactory){
+        this.wrapper = wrapper;
+        this.clipFactory = clipFactory;
+        this.standbyClipFactory = standbyClipFactory;
+        this.wrapperHeight = wrapper.clientHeight;
+        this.isStop = false;
+    }
+
+    createClipElement(clip){
+        const dom = document.createElement('div');
+        dom.setAttribute('class', 'clip');
+        clip.getBulletList().map(bullet => {
+            const d = document.createElement('div');
+            d.setAttribute('class', 'bullet');
+            d.innerHTML = '<div class="inner">' + bullet.text + '</div>';
+            dom.appendChild(d);
+        });
+        return dom;
+    }
+
+    move(clip, nextCallback, endCallback){
+
+      const ele = this.createClipElement(clip);
+      ele.style.opacity = 0;
+      this.wrapper.appendChild(ele);
+
+      let y = this.wrapperHeight;
+      let delta = 1;
+      let nextY = this.wrapperHeight - ele.clientHeight;
+      let endY = -1 * ele.clientHeight;
+      let status = 'before'; // before, in, end
+
+      ele.style.transform = `translate3d(0, ${y}px, 0)`;
+      ele.style.opacity = 1;
+      const animation = () => {
+        y -= delta;
+        ele.style.transform = `translate3d(0, ${y}px, 0)`;
+
+        if( (y <= nextY) && (status == 'before')){
+          status = 'in';
+          nextCallback();
+        }
+        if( (y <= endY) && (status === 'in') ){
+          status = 'end';
+          ele.remove();
+          endCallback();
+        }
+
+        if(status === 'end'){ return }
+
+        if(this.isStop){return}
+
+        requestAnimationFrame(animation);
+      };
+
+      animation();
+    }
+
+    getNewClip(callback){
+        let clip = this.clipFactory.pop();
+        if(clip.isEmpty()){
+          clip = this.standbyClipFactory.pop();
+          if(clip.isEmpty()){
+            setTimeout(() => {
+              this.getNewClip(callback);
+            }, 500);
+            return;
+          }
+        }
+        callback(clip);
+    }
+
+    run(){
+      this.getNewClip(clip => {
+        this.move(clip, this.run.bind(this), () => {
+          clip.getBulletList().map(bullet => {
+            this.standbyClipFactory.receive(bullet);
+          });
+        });
+      });
+    }
+
+    stop(){
+        this.isStop = true;
+    }
+
+}
+
+  </script>
+
+  <script type="text/babel">
+
+    class MyComponent extends React.Component {
+        constructor(props){
+          super(props);
+          this.state = {};
+          this.state.counter = 0;
+          this.state.genNumber = null;
+          this.clipFactory = new ClipFactory();
+          this.standbyClipFactory = new StandbyClipFactory();
+          this.engine = null;
+        }
+
+        componentDidMount(){
+          setInterval(() => {
+            this.setState({counter: this.state.counter + 1});
+          }, 1000);
+        }
+
+        componentWillUmount(){
+          if(this.engine){this.engine.stop()}
+        }
+
+        onView(dom){
+          if(!!this.engine){return}
+          if(!dom){return}
+          this.engine = new Engine(dom, this.clipFactory, this.standbyClipFactory);
+          this.engine.run();
+        }
+
+        gen(){
+          if(!this.state.genNumber){return}
+          (new Array(this.state.genNumber)).fill(1).map(o => {
+            const bullet = new Bullet(this.state.counter);
+            this.clipFactory.receive(bullet);
+          });
+        }
+
+        render(){
+          return (
+            <div>
+              <div>滚动字幕显示 {this.state.counter}</div>
+              <div style={{margin: 10}}>
+                <span>随机生成</span>
+                <input onChange={ e => {this.setState({genNumber: parseInt(e.target.value, 10)})}} />
+                <span>条消息</span>
+                <button onClick={this.gen.bind(this)}>确定</button>
+              </div>
+              <div className="view" key="view" ref={dom => this.onView(dom)}></div>
+            </div>
+          )
+        }
+    }
+    ReactDOM.render(<MyComponent />, document.getElementById('app'));
+  </script>
+</body>
+</html>

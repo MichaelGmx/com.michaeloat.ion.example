@@ -84,6 +84,8 @@ if (rootdir) {
 
       if(fs.existsSync(indexPath)) {
         addPlatformBodyTag(indexPath, platform);
+      } else {
+        console.log('Not found index.html');
       }
 
     } catch(e) {
