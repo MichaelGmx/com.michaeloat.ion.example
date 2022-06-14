@@ -65,5 +65,47 @@ uxServices
           }
         },
 
+
+
+
+        /**
+         * 弹出 Local Notification
+         * @param {string} str_Title - 标题
+         * @param {string} str_Text - 内容
+         * @param {string} str_Icon - 图标
+         * @param {string} lstOf_Image - 图片
+         * @param {string} obj_Data - 附加内容
+         */
+        showLocalNotication: function (str_Title, str_Text, str_Icon, lstOf_Image, obj_Data) {
+          if (window.cordova && window.cordova.plugins && window.cordova.plugins.notification && window.cordova.plugins.notification.local) {
+            window.cordova.plugins.notification.local.schedule({
+              id: (new Date()).valueOf(),  // 使用 时间戳 作id
+              title: str_Title,
+              text: str_Text,
+              icon: str_Icon,
+              attachments: lstOf_Image,
+              data: obj_Data
+            });
+          }
+        },
+
+        // FCM Event 處理
+        fcmEvent: function (str_Evnet) {
+          if (str_Evnet) {
+            var tmpUrl = str_Evnet;
+            if (str_Evnet.indexOf("/") == 0) {   // 若是/開頭
+              tmpUrl = str_Evnet.slice(1);
+            }
+            if (str_Evnet.indexOf("http") == 0) {   // 若是http開頭
+              tmpUrl = str_Evnet.split('#/')[1];
+            }
+            window.location.hash = '#/' + tmpUrl;
+            // var arr_Event = str_Evnet.split(',');
+            // var obj_Event = new Object();
+            // obj_Event[arr_Event[1]] = arr_Event[2];
+            // $state.go(arr_Event[0], obj_Event);
+          }
+        },
+
       }
     }])

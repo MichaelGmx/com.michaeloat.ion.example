@@ -1,3 +1,5 @@
+CodePush 已不支持Cordova
+
 [官方Doc](https://docs.microsoft.com/en-us/appcenter/distribution/codepush/cli)
 
 #### 发布 更新（Releasing Updates）

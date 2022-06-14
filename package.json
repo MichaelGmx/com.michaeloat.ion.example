@@ -5,21 +5,30 @@
   "scripts": {
     "start": "ionic serve -p 8900 --external",
     "build": "ionic cordova build android",
-    "clear": "ionic cordova platform rm android"
+    "clear": "ionic cordova platform rm android",
+    "d": "ionic cordova run android -l"
   },
   "devDependencies": {
     "@ionic/v1-toolkit": "^1.0.0",
+    "cordova-android": "^9.1.0",
+    "cordova-plugin-androidx": "^3.0.0",
+    "cordova-plugin-androidx-adapter": "^1.1.3",
+    "cordova-plugin-badge": "^0.8.8",
+    "cordova-plugin-firebase-analytics": "^6.0.1",
+    "cordova-plugin-firebase-messaging": "^6.0.0",
+    "cordova-plugin-local-notification": "^0.9.0-beta.2",
+    "cordova-support-android-plugin": "^1.0.2",
     "gulp": "^3.5.6",
-    "gulp-clean-css": "^3.7.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-sass": "^3.1.0",
     "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^3.7.0",
     "gulp-concat": "^2.6.1",
     "gulp-html-replace": "^1.6.2",
     "gulp-if": "^3.0.0",
     "gulp-ng-annotate": "^2.1.0",
     "gulp-ngmin": "^0.3.0",
+    "gulp-rename": "^1.2.0",
     "gulp-replace": "^1.1.3",
+    "gulp-sass": "^3.1.0",
     "gulp-strip-debug": "^4.0.0",
     "gulp-uglify": "^3.0.2",
     "minimist": "^1.2.5",
@@ -27,12 +36,7 @@
   },
   "dependencies": {
     "angular-signalr-hub": "^1.6.3",
-    "code-push": "^3.0.1",
-    "cordova-android": "^8.1.0",
-    "cordova-plugin-advanced-http": "^3.1.0",
-    "cordova-plugin-code-push": "^2.0.0",
     "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^5.0.0",
@@ -40,7 +44,6 @@
     "cordova-plugin-splashscreen": "^6.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-whitelist": "^1.3.4",
-    "cordova-plugin-zip": "^3.1.0",
     "phonegap-plugin-barcodescanner": "^8.1.0"
   },
   "cordova": {
@@ -57,7 +60,10 @@
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-media-capture": {},
-      "cordova-plugin-code-push": {}
+      "cordova-plugin-firebase-messaging": {},
+      "cordova-plugin-local-notification": {},
+      "cordova-plugin-androidx": {},
+      "cordova-plugin-androidx-adapter": {}
     },
     "platforms": [
       "android"
